@@ -74,18 +74,21 @@ class RecipeApp:
         self.root.geometry("1000x1000")
         self.root.title("Group B Recipe Book")
 
+    # Labels for text boxes to show recipe info
         Label(root, text="Recipe Name").grid(row=0)
         Label(root, text="Ingredients").grid(row=1)
         Label(root, text="Instructions").grid(row=2)
         Label(root, text="Cooking Time").grid(row=3)
         Label(root, text="Dietary Information").grid(row=4)
 
+    # Text boxes to display recipe info
         self.e1 = Text(root, height=1, padx=5, pady=5)
         self.e2 = Text(root, height=3, padx=5, pady=5)
         self.e3 = Text(root, height=8, padx=5, pady=5)
         self.e4 = Text(root, height=1, padx=5, pady=5)
         self.e5 = Text(root, height=1, padx=5, pady=5)
 
+    # Text box positioning
         self.e1.grid(row=0, column=1)
         self.e2.grid(row=1, column=1)
         self.e3.grid(row=2, column=1)
@@ -99,7 +102,7 @@ class RecipeApp:
         for i in range(30):
             self.button_frame.grid_columnconfigure(i, weight=1)
 
-# Buttons for Add, show, clear, delete and update
+# Buttons for the app
         Button(self.button_frame, text='Add Recipe', command=self.add_recipe).grid(
             row=6, column=0, sticky=NW, pady=4)
         Button(self.button_frame, text='Show All', command=self.show_recipe).grid(
@@ -115,9 +118,27 @@ class RecipeApp:
         Button(self.button_frame, text='Update Recipe', command=self.update_recipe).grid(
             row=6, column=6, sticky=NW, pady=4)
 
+# Instuctions
+        message = '''Welcome to the group B recipe App. Below is a scrollable list of all
+the recipes.
+
+You can select a recipe by double clicking on it.
+
+A recipe must be selected before updating or deleting it.
+
+To add a recipe clear the text and input the recipe information. Then click "Add Recipe".
+
+Each ingredient should seperated by a comma when creating a recipe.'''
+        text_box = Text(height=12, width=68, padx=5,wrap='word')
+        text_box.grid(row=8, column=0, columnspan=20,padx=10,pady=10)
+        text_box.insert('end', message)
+        text_box.config(state='disabled')
+
+        
+
 # listbox to show recipe names
         self.list_box = Listbox(root, height=18, width=40)
-        self.list_box.grid(row=7, column=0, columnspan=3)
+        self.list_box.grid(row=10, column=0, columnspan=3)
         self.list_box.bind('<Double-1>', self.load_recipe)
 
         self.show_all_recipes()
