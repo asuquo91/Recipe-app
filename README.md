@@ -1,5 +1,5 @@
 # Recipe-maker
-Welcome to the group B recipe App. Below is a scrollable list of all
+Welcome to the recipe App. Below is a scrollable list of all
 the recipes.
 
 You can select a recipe by double clicking on it.
